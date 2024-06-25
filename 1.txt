@@ -1,0 +1,14 @@
+import math
+
+python_score = float(input("请输入 Python 课程的分数: "))
+java_score = float(input("请输入 Java 课程的分数: "))
+c_score = float(input("请输入 C 课程的分数: "))
+cpp_score = float(input("请输入 C++课程的分数: "))
+
+average = math.sqrt((python_score**2 + java_score**2 + c_score**2 + cpp_score**2) / 4)
+
+print("我的 Python:", round(python_score, 2), "分")
+print("我的 Java:", round(java_score, 2), "分")
+print("我的 C:", round(c_score, 2), "分")
+print("我的 C++:", round(cpp_score, 2), "分")
+print("我的平均分:", round(average, 2), "分")

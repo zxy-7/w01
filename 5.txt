@@ -1,0 +1,44 @@
+class Human:
+    def __init__(self, age=0, appetite=0, blood='A', height=0, weight=0):
+        self.age = age
+        self.appetite = appetite
+        self.blood = blood
+        self.height = height
+        self.weight = weight
+
+    def eat(self, food_amount):
+        if food_amount <= self.appetite:
+            self.appetite -= food_amount
+            print(f"{self.__class__.__name__} ate {food_amount} units of food.")
+        else:
+            print(f"{self.__class__.__name__} is not hungry enough to eat that much!")
+
+    def sleep(self):
+        # 假设睡眠会让人感到满足和休息
+        print(f"{self.__class__.__name__} is sleeping...")
+
+    def celebrate(self):
+        # 假设庆祝生日会增加一岁
+        self.age += 1
+        print(f"{self.__class__.__name__} is celebrating their birthday! Happy Birthday!")
+
+    def grow(self):
+        # 假设每年长高1cm
+        self.height += 1
+        print(f"{self.__class__.__name__} has grown taller by 1cm!")
+
+# 创建Human对象
+human = Human(age=10, appetite=1000, blood='A', height=150, weight=50)
+
+# 调用方法
+human.eat(500)
+human.sleep()
+human.celebrate()
+human.grow()
+
+print(f"After eating, sleeping, celebrating, and growing:")
+print(f"Age: {human.age}")
+print(f"Appetite: {human.appetite}")
+print(f"Blood type: {human.blood}")
+print(f"Height: {human.height} cm")
+print(f"Weight: {human.weight} kg")

@@ -1,0 +1,28 @@
+import random
+
+def estimate_pi(precision=6):
+    total_points = 0
+    inside_circle = 0
+    pi_estimates = []
+
+    while True:
+        total_points += 1
+        x = random.uniform(0, 1)
+        y = random.uniform(0, 1)
+        distance = x**2 + y**2
+
+        if distance <= 1:
+            inside_circle += 1
+
+        estimated_pi = 4 * (inside_circle / total_points)
+        pi_estimates.append(estimated_pi)
+
+        # Check if the last few estimates have converged to the required precision
+        if len(pi_estimates) >= precision + 1 and all(abs(pi_estimates[-i] - pi_estimates[-1]) < 10**(-precision) for i in range(1, precision + 1)):
+            break
+
+    return pi_estimates[-1]
+
+# Estimate Pi with a precision of 6 decimal places
+pi_estimate = estimate_pi(precision=6)
+print("Estimated value of Pi:", pi_estimate)

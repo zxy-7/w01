@@ -1,0 +1,32 @@
+import os
+
+def rmtree(path):
+    """
+    递归删除目录及其子目录和文件的函数。
+
+    :param path: 要删除的目录的路径。
+    """
+    if os.path.exists(path):
+        for filename in os.listdir(path):
+            file_path = os.path.join(path, filename)
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                rmtree(file_path)
+        os.rmdir(path)
+    else:
+        print(f"{path} 不存在")
+
+# 使用示例
+if __name__ == "__main__":
+    import shutil
+    test_dir = "test_dir"
+    # 创建一个测试目录和一些子目录及文件
+    os.makedirs(os.path.join(test_dir, "sub_dir1"))
+    os.makedirs(os.path.join(test_dir, "sub_dir2"))
+    with open(os.path.join(test_dir, "test_file.txt"), "w") as f:
+        f.write("Test content")
+    # 使用自定义的 rmtree 函数删除目录
+    rmtree(test_dir)
+    # 检查目录是否已被删除
+    assert not os.path.exists(test_dir), f"{test_dir} was not deleted"

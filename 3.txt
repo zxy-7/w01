@@ -1,0 +1,11 @@
+def calculate_series_sum():
+    # 首项a1为1，公比q为1/2
+    a1 = 1
+    q = 1/2
+    # 使用等比数列求和公式计算无穷数列的和
+    series_sum = a1 / (1 - q)
+    return series_sum
+
+# 调用函数并打印结果
+result = calculate_series_sum()
+print("数列的和为:", result)
